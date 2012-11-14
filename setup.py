@@ -3,7 +3,7 @@
 from distutils.core import setup
 
 setup(name='seao',
-      version='0.1',
+      version='0.2',
       description='Seao.ca wrapper.',
       author='Alain Gilbert',
       author_email='alain.gilbert.15@gmail.com',
