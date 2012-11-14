@@ -8,5 +8,6 @@ setup(name='seao',
       author='Alain Gilbert',
       author_email='alain.gilbert.15@gmail.com',
       packages=['seao'],
+      url='https://github.com/alaingilbert/seao-python',
       install_requires=['requests', 'beautifulsoup4'],
      )
