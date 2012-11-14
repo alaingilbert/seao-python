@@ -1,5 +1,7 @@
 from bs4 import BeautifulSoup
 from seao.errors import NotLoggedError, InvalidUsernamePasswordError
+from ineptpdf import PDFSerializer
+import StringIO
 
 import requests
 
@@ -58,9 +60,13 @@ class Seao:
         self.session = requests.session()
 
 
-    def get_file(self, item_id):
+    def get_file(self, item_id, decrypt=False):
         res = self.session.get(self.url_viewfile % item_id).content
         if res.find('window.location.replace') != -1:
             raise NotLoggedError()
-        else:
-            return res
+
+        if decrypt:
+            tmp = PDFSerializer(StringIO.StringIO(res))
+            return tmp.dump(StringIO.StringIO())
+
+        return res
